@@ -48,8 +48,8 @@ public class CheckingAccount{
 	
 	public String toString() {
 		return (
-					"Checking Account Balance: " + 
-				   "\nChecking Account Interest Rate: " + 
-					"\nChecking Account Balance in 3 Years: " 
-				   );
+			"Checking Account Balance: " + 
+			"\nChecking Account Interest Rate: " + 
+			"\nChecking Account Balance in 3 Years: " 
+			);
 	}
