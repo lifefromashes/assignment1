@@ -2,8 +2,6 @@ package com.meritamerica.assignment1;
 
 import java.text.DecimalFormat;
 
-//import java.text.DecimalFormat;
-//import java.text.NumberFormat;
 
 public class SavingsAccount {
 	
@@ -23,7 +21,7 @@ public class SavingsAccount {
 		return this.currentBalance;
 	}
 	
-	public double getSavingsInterestRate() {
+	public double getInterestRate() {
 		return this.savingsInterestRate;
 	}
 	
@@ -57,7 +55,7 @@ public class SavingsAccount {
 		return true;
 	}
 	
-	public double savingsFutureValue(int years) {
+	public double futureValue(int years) {
 		savingsValue = currentBalance * Math.pow(.01 + 1, years);
 		return savingsValue;
 
@@ -69,7 +67,7 @@ public class SavingsAccount {
 		return (
 				"Savings Account Balance: " + df.format(currentBalance) + 
 				"\nSavings Account Interest Rate: " + iformat.format(savingsInterestRate) + 
-				"\nSavings Account Balance in 3 years: " + df.format(savingsFutureValue(3))
+				"\nSavings Account Balance in 3 years: " + df.format(futureValue(3))
 				);
 	}
 }

@@ -15,7 +15,7 @@ public class AccountHolder {
 	  CheckingAccount checking;
 	  SavingsAccount savings ;
 	 
-	 public AccountHolder() {
+	 public AccountHolder() { //default constructor
 		 
 	 }
 	
@@ -25,7 +25,6 @@ public class AccountHolder {
 		this.middleName = middleName;
 		this.lastName = lastName;
 		this.ssn = ssn;
-		
 		this.checking = new CheckingAccount(checkingAccountOpeningBalance);
 		this.savings = new SavingsAccount(savingsAccountOpeningBalance);
 
@@ -77,7 +76,8 @@ public class AccountHolder {
 		 return (
 				 "Name: " + firstName + " " + middleName + " " + lastName + 
 				 "\nSSN: " + ssn + 
-				 "\n" + checking.toString() 
+				 "\n" + checking.toString() + //new changes
+				 "\n" + savings.toString()  //new changes
 				 );
 //				 "\nChecking Account Balance: " + checking.getBalance() +
 //				 "\nChecking Account Interest Rate: " + checking.interestRate +

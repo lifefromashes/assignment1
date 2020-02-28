@@ -8,18 +8,13 @@ public class CheckingAccount  {
 	double checkingBalanceThreeYears;
 	double openingBalance;
 	double currentBalance;
-	
-	
 	double interestRate = .0001;
-	//double interestRateFormula = 1 + interestRate;
-
 	double value;
 	
 	public CheckingAccount( double openingBalance) {
 		this.openingBalance = openingBalance;
 		this.currentBalance = openingBalance;
 		
-			
 	}
 	
 	public double getBalance() {
@@ -27,7 +22,7 @@ public class CheckingAccount  {
 	}
 	
 	
-	public double getCheckingInterestRate() {
+	public double getInterestRate() {
 		return this.interestRate;
 	}
 	

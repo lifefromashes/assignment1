@@ -22,25 +22,6 @@ public class MeritAmericaBankApp {
 		person2.getCheckingAccount().deposit(-500);
 		person2.getSavingsAccount().withdraw(600);
 		System.out.println(person2.getSavingsAccount().toString());
-		
-
-		
-//		person1.checking.toString();
-//		person1.checking.deposit(500);
-//		person1.savings.withdraw(800);
-//		System.out.println(person1.toString());
-//		System.out.println("*****************");
-//		
-//		AccountHolder person2 = new AccountHolder("Mark", "Jack ", "Williams", " 9854123698", 100, 1000);
-//		System.out.println(person2);
-//		
-		
-//		person1.checking.toString();
-//		
-//
-//		System.out.println("********************");
-//		System.out.println(person1);
-//		System.out.println("**************");
 
 
 	}
