@@ -1,38 +1,43 @@
 package com.meritamerica.assignment1;
 
-public class SavingsAccount extends AccountHolder {
+import java.text.DecimalFormat;
+
+
+public class SavingsAccount {
 	
-	double savingsInterestRate = .01;
+	private double currentBalance;
+	private double savingsValue;
+	private double interestRate = .01;
+	//double savingsInterestRate = .01;
+	//double openingBalance;
 	
-	public SavingsAccount(String firstName, String middleName, String lastName, String ssn, double checkingAccountOpeningBalance, double savingsAccountOpeningBalance, double openingBalance) {
-		super(firstName, middleName, lastName, ssn, savingsAccountOpeningBalance, checkingAccountOpeningBalance);
-		
+	//Constructor to initialize the objects
+	public SavingsAccount(double openingBalance) {
+		this.currentBalance = openingBalance;
 	}
-	
 	
 	public double getBalance() {
-		return this.savingsBalance;
+		return this.currentBalance;
 	}
 	
-	public double getSavingsInterestRate() {
-		return this.savingsInterestRate;
+	public double getInterestRate() {
+		return this.interestRate; //savingsInterestRate;
 	}
 	
 	public void setInterestRate(double interestRate, int years) {
 		this.interestRate = interestRate;
-		interestRate = 1 + .01;
-				//savingsBalance * Math.pow((interestRate + 1), years);
 		
 	}
 	
+	//methods for withdrawing and depositing money into savings account
 	public boolean withdraw(double amount) {
-		if (savingsBalance <= 0 || amount > savingsBalance) {
+		if (currentBalance <= 0 || amount > currentBalance) {
 			System.out.println("Unable to make withdrawal. Not enough funds.");
 			return false;
 		}
 		else {
-			savingsBalance = savingsBalance - amount;
-			System.out.println("Withdrawing: " + amount + "." + " Your balance is now: " + savingsBalance);
+			currentBalance = currentBalance - amount;
+			System.out.println("Withdrawing: " + amount + " from savings.  Your balance is now: " + currentBalance);
 		}
 		return true;
 	}
@@ -43,22 +48,28 @@ public class SavingsAccount extends AccountHolder {
 			return false;
 		}
 		else {
-			savingsBalance = savingsBalance + amount;
-			System.out.println("Depositing: " + amount + "." + " Your balance is now: " + savingsBalance);
+			currentBalance = currentBalance + amount;
+			System.out.println("Depositing: " + amount + " to savings. Your balance is now: " + currentBalance);
 		}
 		return true;
 	}
 	
-	public double savingsFutureValue(int years) {
-		double savingsValue = savingsBalance * (double)(Math.pow((interestRate + 1), years));
+	
+	//formula to get the future value of savings with interest accrued
+	public double futureValue(int years) {
+		savingsValue = currentBalance * Math.pow((interestRate + 1), years);
 		return savingsValue;
+
 	}
 	
+	//method to print savings account information
 	public String toString() {
+		DecimalFormat df = new DecimalFormat("0.00");
+		DecimalFormat iformat = new DecimalFormat(".0000");
 		return (
-				"Savings Account Balance: " + savingsBalance + 
-				"\nSavings Account Interest Rate: " + savingsInterestRate + 
-				"\nSavings Account Balance in 3 years: " 
+				"Savings Account Balance: " + df.format(currentBalance) + 
+				"\nSavings Account Interest Rate: " + iformat.format(interestRate) +//savingsInterestRate) + 
+				"\nSavings Account Balance in 3 years: " + df.format(futureValue(3))
 				);
 	}
 }

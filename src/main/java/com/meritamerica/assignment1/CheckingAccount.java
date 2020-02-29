@@ -2,59 +2,65 @@ package com.meritamerica.assignment1;
 
 import java.text.DecimalFormat;
 
-public class CheckingAccount extends AccountHolder {
-	
-	double checkingBalanceThreeYears;
-	
-	double interestRate = .0001;
-	//double interestRateFormula = 1 + interestRate;
 
-	double value;
+public class CheckingAccount  {
 	
-	public CheckingAccount(String firstName, String middleName, String lastName, String ssn, double checkingAccountOpeningbalance, double savingsAccountOpeningBalance, double openingbalance) {
-		super(firstName, middleName, lastName, ssn, checkingAccountOpeningbalance, savingsAccountOpeningBalance);
-			
+	private double checkingBalanceThreeYears;
+	private double currentBalance;
+	private double interestRate = .0001;
+
+	//Constructor to initialize the objects
+	public CheckingAccount( double openingBalance) {
+		this.currentBalance = openingBalance;
+		
 	}
 	
 	public double getBalance() {
-		return this.checkingBalance;
+		return this.currentBalance;
 	}
 	
 	
-	public double getCheckingInterestRate() {
+	public double getInterestRate() {
 		return this.interestRate;
 	}
 	
 	public void setInterestRate(double interestRate, int years) {
 		this.interestRate = interestRate;
-		//checkingBalanceThreeYears = checkingBalance * Math.pow((interestRate + 1), years);
 		
 	}
-	
+	//Method and conditions for withdrawing money 
 	public boolean withdraw(double amount) {
-		if (checkingBalance <= 0 || amount > checkingBalance) {
+		if (currentBalance <= 0) {
+			System.out.println("Unable to make withdrawal. Not enough funds.");
+			return false;
+		}
+		if (amount > currentBalance) {
 			System.out.println("Unable to make withdrawal. Not enough funds.");
 			return false;
 			
+		} 
+		 if (amount < 0) {
+			System.out.println("Unable to make withdrawal.");
+			return false;
 		}
 		else {
-			this.checkingBalance =  checkingBalance - amount;
-			System.out.println("Withdrawing: " + amount + "." + "Your balance is now: " + checkingBalance);
+			this.currentBalance =  currentBalance - amount;
+			System.out.println("Withdrawing: " + amount + " from checking. Your balance is now: " + currentBalance);
 			
 		}
 		return true;
 		
 		
 	}
-	
+	//methods and conditions for depositing money
 	public boolean deposit(double amount) {
 		if (amount <= 0) {
 			System.out.println("You have to deposit a positive amount.");
 			return false;
 		} 
 		else {
-			this.checkingBalance = checkingBalance +  amount;
-			System.out.println("Depositing: " + amount + "." + "Your balance is now: " + checkingBalance);
+			this.currentBalance = currentBalance +  amount;
+			System.out.println("Depositing: " + amount + " to checking. Your balance is now: " + currentBalance);
 			
 			
 		}
@@ -62,23 +68,23 @@ public class CheckingAccount extends AccountHolder {
 	}
 	
 	
-	
+	//method to calculate future value of current balance in the checking account
 	public double futureValue(int years) {
 		//Formula: FV = PV(1 + interestRate) ^ years;
-		//double FV = balance * Math.pow(1.01, 3);
 		
-		checkingBalanceThreeYears = checkingBalance * Math.pow((interestRate + 1), years);
-
-		return this.checkingBalanceThreeYears;
+		checkingBalanceThreeYears = currentBalance * Math.pow((interestRate + 1), years);
+		return checkingBalanceThreeYears;
 
 		
 	}
-	
+	//method to return the string representation of our object
 	public String toString() {
+		DecimalFormat df = new DecimalFormat("0.00"); //format the currency
+		DecimalFormat iformat = new DecimalFormat(".0000"); //format the interest rate
 		return (
-					"Checking Account Balance: " + checkingBalance + 
-				   "\nChecking Account Interest Rate: " + this.interestRate +
-					"\nChecking Account Balance in 3 Years: " + futureValue(3)
+					"Checking Account Balance: " + df.format(currentBalance) + 
+				   "\nChecking Account Interest Rate: " + iformat.format(this.interestRate) +
+					"\nChecking Account Balance in 3 Years: " + df.format(futureValue(3))
 				   );
 	}
 }
