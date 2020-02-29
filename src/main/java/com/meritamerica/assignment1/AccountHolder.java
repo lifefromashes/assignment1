@@ -1,8 +1,12 @@
+package com.meritamerica.assignment1;
 /**
+ *This program creates software for Merit Bank. Allows for the creation of an Account Holder
+ * and for the creation of checking and savings accounts for the account holder.
  * 
+ * Date: 2/29/2020
+ * Version 1.0
  */
 
-package com.meritamerica.assignment1;
 
 public class AccountHolder {
 
@@ -72,8 +76,9 @@ public class AccountHolder {
 		return this.savings;
 	}
 
+	@Override
 	public String toString() {
-		return ("Name: " + firstName + " " + middleName + " " + lastName + "\nSSN: " + ssn + "\n" + checking.toString()
+		return ("Name: " + this.firstName + " " + this.middleName + " " + this.lastName + "\nSSN: " + this.ssn + "\n" + checking.toString()
 				+  "\n" + savings.toString() // new changes
 		);
 		

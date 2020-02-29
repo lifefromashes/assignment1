@@ -1,5 +1,6 @@
 package com.meritamerica.assignment1;
 
+
 import java.text.DecimalFormat;
 
 
@@ -44,7 +45,7 @@ public class CheckingAccount  {
 			return false;
 		}
 		else {
-			this.currentBalance =  currentBalance - amount;
+			this.currentBalance =  this.currentBalance - amount;
 			System.out.println("Withdrawing: " + amount + " from checking. Your balance is now: " + currentBalance);
 			
 		}
@@ -59,10 +60,8 @@ public class CheckingAccount  {
 			return false;
 		} 
 		else {
-			this.currentBalance = currentBalance +  amount;
-			System.out.println("Depositing: " + amount + " to checking. Your balance is now: " + currentBalance);
-			
-			
+			this.currentBalance = this.currentBalance +  amount;
+			System.out.println("Depositing: " + amount + " to checking. Your balance is now: " + this.currentBalance);
 		}
 			return true;
 	}
@@ -71,13 +70,13 @@ public class CheckingAccount  {
 	//method to calculate future value of current balance in the checking account
 	public double futureValue(int years) {
 		//Formula: FV = PV(1 + interestRate) ^ years;
-		
-		checkingBalanceThreeYears = currentBalance * Math.pow((interestRate + 1), years);
+		checkingBalanceThreeYears = currentBalance * Math.pow((this.interestRate + 1), years);
 		return checkingBalanceThreeYears;
 
 		
 	}
 	//method to return the string representation of our object
+	@Override
 	public String toString() {
 		DecimalFormat df = new DecimalFormat("0.00"); //format the currency
 		DecimalFormat iformat = new DecimalFormat(".0000"); //format the interest rate

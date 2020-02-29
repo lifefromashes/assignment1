@@ -36,8 +36,8 @@ public class SavingsAccount {
 			return false;
 		}
 		else {
-			currentBalance = currentBalance - amount;
-			System.out.println("Withdrawing: " + amount + " from savings.  Your balance is now: " + currentBalance);
+			this.currentBalance = this.currentBalance - amount;
+			System.out.println("Withdrawing: " + amount + " from savings.  Your balance is now: " + this.currentBalance);
 		}
 		return true;
 	}
@@ -48,8 +48,8 @@ public class SavingsAccount {
 			return false;
 		}
 		else {
-			currentBalance = currentBalance + amount;
-			System.out.println("Depositing: " + amount + " to savings. Your balance is now: " + currentBalance);
+			this.currentBalance = this.currentBalance + amount;
+			System.out.println("Depositing: " + amount + " to savings. Your balance is now: " + this.currentBalance);
 		}
 		return true;
 	}
@@ -57,12 +57,13 @@ public class SavingsAccount {
 	
 	//formula to get the future value of savings with interest accrued
 	public double futureValue(int years) {
-		savingsValue = currentBalance * Math.pow((interestRate + 1), years);
+		savingsValue = this.currentBalance * Math.pow((this.interestRate + 1), years);
 		return savingsValue;
 
 	}
 	
 	//method to print savings account information
+	@Override
 	public String toString() {
 		DecimalFormat df = new DecimalFormat("0.00");
 		DecimalFormat iformat = new DecimalFormat(".0000");
