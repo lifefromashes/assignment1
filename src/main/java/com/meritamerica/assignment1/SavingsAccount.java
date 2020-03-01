@@ -8,8 +8,7 @@ public class SavingsAccount {
 	private double currentBalance;
 	private double savingsValue;
 	private double interestRate = .01;
-	//double savingsInterestRate = .01;
-	//double openingBalance;
+	
 	
 	//Constructor to initialize the objects
 	public SavingsAccount(double openingBalance) {
@@ -31,7 +30,7 @@ public class SavingsAccount {
 	
 	//methods for withdrawing and depositing money into savings account
 	public boolean withdraw(double amount) {
-		if (currentBalance <= 0 || amount > currentBalance) {
+		if (this.currentBalance <= 0 || amount > this.currentBalance) {
 			System.out.println("Unable to make withdrawal. Not enough funds.");
 			return false;
 		}
@@ -68,8 +67,8 @@ public class SavingsAccount {
 		DecimalFormat df = new DecimalFormat("0.00");
 		DecimalFormat iformat = new DecimalFormat(".0000");
 		return (
-				"Savings Account Balance: " + df.format(currentBalance) + 
-				"\nSavings Account Interest Rate: " + iformat.format(interestRate) +//savingsInterestRate) + 
+				"Savings Account Balance: " + df.format(this.currentBalance) + 
+				"\nSavings Account Interest Rate: " + iformat.format(this.interestRate) +  
 				"\nSavings Account Balance in 3 years: " + df.format(futureValue(3))
 				);
 	}

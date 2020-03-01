@@ -31,11 +31,11 @@ public class CheckingAccount  {
 	}
 	//Method and conditions for withdrawing money 
 	public boolean withdraw(double amount) {
-		if (currentBalance <= 0) {
+		if (this.currentBalance <= 0) {
 			System.out.println("Unable to make withdrawal. Not enough funds.");
 			return false;
 		}
-		if (amount > currentBalance) {
+		if (amount > this.currentBalance) {
 			System.out.println("Unable to make withdrawal. Not enough funds.");
 			return false;
 			
@@ -70,7 +70,7 @@ public class CheckingAccount  {
 	//method to calculate future value of current balance in the checking account
 	public double futureValue(int years) {
 		//Formula: FV = PV(1 + interestRate) ^ years;
-		checkingBalanceThreeYears = currentBalance * Math.pow((this.interestRate + 1), years);
+		checkingBalanceThreeYears = this.currentBalance * Math.pow((this.interestRate + 1), years);
 		return checkingBalanceThreeYears;
 
 		
@@ -81,7 +81,7 @@ public class CheckingAccount  {
 		DecimalFormat df = new DecimalFormat("0.00"); //format the currency
 		DecimalFormat iformat = new DecimalFormat(".0000"); //format the interest rate
 		return (
-					"Checking Account Balance: " + df.format(currentBalance) + 
+					"Checking Account Balance: " + df.format(this.currentBalance) + 
 				   "\nChecking Account Interest Rate: " + iformat.format(this.interestRate) +
 					"\nChecking Account Balance in 3 Years: " + df.format(futureValue(3))
 				   );
